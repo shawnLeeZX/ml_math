@@ -1,0 +1,106 @@
+% vim:tw=72 sw=2 ft=tex
+%         File: thoughts_report.tex
+% Date Created: 2013 Jun 18
+%  Last Change: 2013 Dec 12
+%       Author: hhiker
+\documentclass[a4paper]{article}
+\usepackage{xltxtra}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{minted}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage{varioref}
+\usepackage{cleveref}
+\newcommand{\head}[1]{\textbf{#1}}
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=SimSun]{KaiTi}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+\title{Solve Optimal Para of Least Square using Matrix Calculus}
+\author{Shuai Li}
+
+\begin{document}
+\maketitle
+
+\begin{definition}
+	Suppose we have a $m\times n$ matrix $X$, a $n\times 1$ vector
+	$\theta$ and a $m\times 1$ vector y. We want to make
+	$X\theta$ be closest to $y$.
+\end{definition}
+
+If we use Euclidean distance as distance metric, then the goal is to
+minimize $\frac{1}{2}(X\theta - y)(X\theta - y)^T$.
+
+Since it is convex, the minimum is where the gradient is zero. The
+problem is to solve:
+
+\begin{equation}
+	J(\theta) = \nabla_\theta \frac{1}{2}(X\theta - y)(X\theta - y)^T = 0
+	\label{eq:least_square_gradient}
+\end{equation}
+
+Let's simplify it.
+
+\begin{eqnarray}
+	\nabla_\theta \frac{1}{2}(X\theta - y)(X\theta - y)^T &=& \nabla_\theta \frac{1}{2}(X\theta - y)(\theta^TX^T - y^T) \nonumber\\
+		&=& \nabla_\theta \frac{1}{2}(X\theta \theta^TX^T - y\theta^TX^T - X\theta y^T + yy^T) \nonumber
+\end{eqnarray}
+
+Note the following fact:
+\begin{itemize}
+	\item $yy^T$ does not contain $\theta$, $\nabla_\theta yy^T$ is zero.
+	\item $J(\theta)$ is a real number. The trace of $J(\theta)$ is itself.
+\end{itemize}
+
+Then left side of \cref{eq:least_square_gradient} becomes:
+\begin{eqnarray}
+		\nabla_\theta \frac{1}{2}(X\theta \theta^TX^T - y\theta^TX^T - X\theta y^T + yy^T) &=& \frac{1}{2}\nabla_\theta tr(X\theta \theta^TX^T - y\theta^TX^T - X\theta y^T)\nonumber\\
+	&=& \frac{1}{2}(\nabla_\theta trX\theta\theta^T X^T - \nabla_\theta try\theta^TX^T - \nabla_\theta trX\theta y^T)
+\end{eqnarray}
+
+For each term:
+\begin{eqnarray}
+	\nabla_\theta trX\theta\theta^T X^T &=& \nabla_\theta tr\theta\theta^T X^TX \nonumber \\
+	&=& \nabla_\theta tr\theta I\theta^T X^TX \nonumber \\
+	&=& X^TX\theta + X^TX\theta \nonumber \\
+	&=& 2X^TX\theta \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+	\nabla_\theta try\theta^TX^T &=& \nabla_\theta trX\theta y^T \nonumber \\
+	&=& \nabla_\theta tr\theta y^TX \nonumber \\
+	&=& X^Ty \nonumber
+\end{eqnarray}
+\begin{eqnarray}
+	\nabla_\theta trX\theta y^T &=& \nabla_\theta tr\theta y^TX \nonumber \\
+	&=& X^Ty \nonumber
+\end{eqnarray}
+
+Combine them, \cref{eq:least_square_gradient} becomes:
+\begin{eqnarray}
+	\frac{1}{2}(2X^TX\theta - 2X^Ty)) &=& 0 \nonumber\\
+	X^TX\theta &=& 2X^Ty \nonumber\\
+	\theta &=& (X^TX)^{-1}X^Ty \nonumber
+\end{eqnarray}
+
+This is the close form solution of least square method. \qed
+
+\end{document}
