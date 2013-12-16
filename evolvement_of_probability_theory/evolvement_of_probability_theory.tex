@@ -1,0 +1,77 @@
+% vim:tw=72 sw=2 ft=tex
+%         File: thoughts_report.tex
+% Date Created: 2013 Jun 18
+%  Last Change: 2013 Dec 16
+%       Author: hhiker
+\documentclass[a4paper]{article}
+\usepackage{xltxtra}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{minted}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage[colorlinks=true,linkcolor=red]{hyperref}
+% \usepackage{hyperref}
+\usepackage{varioref}
+\usepackage{cleveref}
+\newcommand{\head}[1]{\textbf{#1}}
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=SimSun]{KaiTi}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+\title{Evolvement of Probability Theory}
+\author{Shuai}
+\date{}
+
+\begin{document}
+\maketitle
+
+This is the text at the very beginning of the book \textit{Probability Theory} writen
+by Loeve. Mathematics could be pure, but every part of science comes from
+reality. Do not be confused by its abstractness and generality.
+
+Probability theory is concerned with the mathematical analysis of the intuitive
+notion of "chance" or "randomness", which, like all notions, is born of
+experience. The quantitative idea of randomness first took form at the gaming
+tables, and probability theory began, wich Pascal and Fermat(1654), as a theory
+of games of chance. Since then, the notion of chance has found its way into
+almost all branches of knowledge. In particular, the discovery that physical
+"observables", even those which describe the behavior of elementary particles,
+were to be considered as subject to laws of change made an inverstigation of
+the notion of chance basic to the whole problem of rational interpretation of
+nature.
+
+A theory becomes mathematical when it sets up a mathematical model of the
+phenomena with which it is concerned, that is, when, to describe the phenomena,
+it uses a collection of well-defined symbols and operations on the symbols. As
+the number of phenomena, together with their known properties, increases, the
+mathematical model evolves from early crude notions upon which our intuition
+was built in the direction of higher generality and abstractness.
+
+In this manner, the inner consistency of the model of random phenomena became
+doubtful, and this forced a rebuilding of the whole structure in the second
+quarter of this century, starting with a formulation in terms of axioms and
+definitions. Thus there appeared a branch of pure mathematics -- probability
+theory -- concerned with the construction and inverstigation per se of the
+mathematical model of randomness.
+
+
+\end{document}
