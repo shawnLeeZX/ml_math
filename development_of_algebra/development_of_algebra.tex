@@ -1,0 +1,98 @@
+% vim:tw=72 sw=2 ft=tex
+%         File: thoughts_report.tex
+% Date Created: 2013 Jun 18
+%  Last Change: 2013 Dec 16
+%       Author: hhiker
+\documentclass[a4paper]{article}
+\usepackage{xltxtra}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{minted}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage[colorlinks=true,linkcolor=red]{hyperref}
+% \usepackage{hyperref}
+\usepackage{varioref}
+\usepackage{cleveref}
+\newcommand{\head}[1]{\textbf{#1}}
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=SimSun]{KaiTi}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+\title{Development of Algebra}
+\author{Shuai}
+\date{}
+
+\begin{document}
+\maketitle
+
+Algebra can essentially be considered as doing computations similar to
+that of arithmetic with non-numerical mathematical objects.
+Initially, these objects represented either numbers that were not yet
+known (unknowns) or unspecified numbers (indeterminates or parameters),
+allowing one to state and prove properties that are true no matter which
+numbers are involved. For example, in the quadratic equation
+
+\begin{displaymath}
+	ax^2+bx+c=0
+\end{displaymath}
+
+$a$, $b$, $c$ are indeterminates and $x$ is the unknown. Solving this equation
+amounts to computing with the variables to express the unknown x in
+terms of the indeterminates. Then, substituting any numbers for the
+indeterminates, gives the solution of a particular equation after a
+simple arithmetic computation.
+
+As it developed, algebra was extended to other non-numerical objects,
+like vectors, matrices or polynomials. Then, the structural properties
+of these non-numerical objects were abstracted to define algebraic
+structures like groups, rings, fields and algebras.
+
+Before the 16th century, mathematics was divided into only two
+subfields, arithmetic and geometry. Even though some methods, which had
+been developed much earlier, may be considered nowadays as algebra, the
+emergence of algebra and, soon thereafter, of infinitesimal calculus as
+subfields of mathematics only dates from 16th or 17th century. From the
+second half of 19th century on, many new fields of mathematics appeared,
+some of them included in algebra, either totally or partially.
+
+It follows that algebra, instead of being a true branch of mathematics,
+appears nowadays, to be a collection of branches sharing common methods.
+This is clearly seen in the Mathematics Subject Classification where
+none of the first level areas (two digit entries) is called algebra. In
+fact, algebra is, roughly speaking, the union of sections 08-General
+algebraic systems, 12-Field theory and polynomials, 13-Commutative
+algebra, 15-Linear and multilinear algebra; matrix theory,
+16-Associative rings and algebras, 17-Nonassociative rings and algebras,
+18-Category theory; homological algebra, 19-K-theory and 20-Group
+theory. Some other first level areas may be considered to belong
+partially to algebra, like 11-Number theory (mainly for algebraic number
+theory) and 14-Algebraic geometry.
+
+Elementary algebra is the part of algebra that is usually taught in
+elementary courses of mathematics.
+
+Abstract algebra is a name usually given to the study of the algebraic
+structures themselves.
+
+from: \href{http://en.wikipedia.org/wiki/Algebra}{wikipedia}
+
+\end{document}
