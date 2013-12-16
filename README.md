@@ -1,5 +1,14 @@
-This repo keeps tex and pdf files of the mathematical proof I make while I am
-teach myself Machine Learning. Currently I have:
+This repo keeps tex and pdf files of the record of the journey I teach myself
+Mathematics while I am learning Machine Learning. It may contain mathematical
+proofs I make, clarity about the mathematical concepts, development of some
+some math subject. Currently it has:
 
-* Some proof about the trace of Matrix
-* The close form solution of least square
+## Mathematical Proof
+
+* least_squire:     Some proof about the trace of Matrix.
+* trace_of_matrix:  A detailed proof of getting the close form solution of least square method.
+
+## Development of Some Math Subjects
+
+* development_of_algebra:               Development of Algebra
+* evolvement_of_probability_theory:     Evolvement of Probability Theory
