@@ -1,0 +1,123 @@
+% vim:tw=72 sw=2 ft=tex
+%         File: thoughts_report.tex
+% Date Created: 2013 Jun 18
+%  Last Change: 2013 Dec 24
+%       Author: hhiker
+\documentclass[a4paper]{article}
+\usepackage{xltxtra}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{minted}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage[colorlinks=true,linkcolor=red]{hyperref}
+% \usepackage{hyperref}
+\usepackage{varioref}
+\usepackage{cleveref}
+\newcommand{\head}[1]{\textbf{#1}}
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=SimSun]{KaiTi}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+\title{The Natural Numbers}
+\author{Shuai}
+
+
+\begin{document}
+\maketitle
+
+\section{Axiomization of the intuition -- Peano Axiom}
+
+	The notion of a natural number is one of the most fundamental and most
+	important in mathematics. The system of natural numbers was the first
+	abstract scientific concept created by man. Having dealt in everyday
+	life, with certain quantitieso of real things, people noted certain
+	general properties of numbers and developed the notion of counting
+	numbers. This apparently simple concept is in some ways so profound that
+	it has prompted some people to believe that this concept comes directly
+	from God. A great German number theorist, Leopold Kronecker(1823 - 1891)
+	said:"God made the natural numbers, all else is the work of
+	man."[Heinrich Weber. Leopold Kronecker. Jahresberichte DMV 1893;
+	2:5-31]. Creating the notion of a natural number is first step not only
+	in mathematics, but in the development of all
+	sciences\cite{dixon2011algebra}.
+
+	The history is long, however, the modern axiomatic theory of natural
+	numbers is developed at the end of the nineteenth century and named in
+	honor of a famous Italian mathematician, Giuseppe Peano(1858 - 1932),
+	whose input in the axiomatization of natural numbers was of exceptional
+	mathematical and philosopical value\cite{dixon2011algebra}.
+
+	Mathematics comes from everyday life, but abstracts it, then provides a
+	solid foundation for further reasoning, development of more advanced
+	theory.
+
+	The peano axiom is the very foundation of number theory, or in some
+	sense modern mathematics. It clearly defines what we used to count in
+	real life, meaning axiomize it.
+
+	\begin{definition}
+		\textbf{Peano Axiom}: The set $N_0$ is a nonempty set and for all $ a
+		\in N_0 $, there is a uniquely defined element $a'$, called the
+		immediate successor of a and for which the following axioms hold:
+		\begin{itemize}
+			\item
+				\textbf{(P 1)}  a = b implies that $a' = b'$.
+			\item
+				\textbf{(P 2)}  There is an element 0(the natural number 0) such
+				that 0 is not the immediate successor of any element of $N_0$.
+				Thus $0 \neq a'$ for all elements $ a \in N_0 $.
+			\item
+				\textbf{(P 3)}  If $a,b \in N_0$ and $ a' = b'$, then $a = b$.
+			\item
+				\textbf{(P 4)}  (the induction axiom). Let M be a subset of $N_0$
+				satisfying the conditions:
+				\begin{itemize}
+					\item $ 0 \in M$;
+					\item if $a \in M$, then $a' \in M$.
+				\end{itemize}
+				Then $ M = N_0 $.
+		\end{itemize}
+	\end{definition}
+
+	The natural number is defined as\cite{dixon2011algebra}:
+
+	\begin{displaymath}
+		0 = \emptyset, 1 = \{\emptyset\}, 2 = 1 \cup \{1\} = \{0, 1\}, 3 = 2 \cup
+		\{2\} = \{0, 1, 2\} ...
+	\end{displaymath}
+
+	In the book\cite{dixon2011algebra}, the author does not talk about why
+	natural number is defined this way:
+	\begin{quote}
+		Such a level of exposition is far beyond the scope of this book and
+		requires significant mathematical maturity.
+	\end{quote}
+
+	I just take those definition as natural abstraction of the counting
+	symbol used by people.
+
+	With the Peano Axiom, all normal arithmetical properties can be derived.
+
+	Ok. I think this is where I should stop digging.
+
+\bibliographystyle{plain}
+\bibliography{../reference_lib/reference}
+
+\end{document}

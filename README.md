@@ -19,3 +19,15 @@ be performed as I learn and understand new things.
 ## /information_theory: Understand of Information Theory
 
 * understanding_entropy:    Shannon Entropy
+
+## /real_number_system: Construction of Real Number System
+
+This part is intended for real number system, however, for now it only has:
+
+* the_natural_number: Construction of Real Number.
+
+<!-- ## /algebra: Learning algrebra bottom-up or from intuition to abstraction. -->
+
+<!-- * algebra:  still under construction. -->
+
+## /reference_lib: lib for bibtex
