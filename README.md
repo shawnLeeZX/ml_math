@@ -26,8 +26,8 @@ This part is intended for real number system, however, for now it only has:
 
 * the_natural_number: Construction of Real Number.
 
-<!-- ## /algebra: Learning algrebra bottom-up or from intuition to abstraction. -->
+## /algebra: Learning algrebra bottom-up or from intuition to abstraction.
 
-<!-- * algebra:  still under construction. -->
+* algebra:  Now the construction of algrebraic structure has reached field.
 
 ## /reference_lib: lib for bibtex

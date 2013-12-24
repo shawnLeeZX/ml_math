@@ -1,0 +1,346 @@
+% vim:tw=72 sw=2 ft=tex
+%         File: thoughts_report.tex
+% Date Created: 2013 Jun 18
+%  Last Change: 2013 Dec 24
+%       Author: hhiker
+\documentclass[a4paper]{article}
+\usepackage{xltxtra}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{minted}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage[colorlinks=true,linkcolor=red]{hyperref}
+% \usepackage{hyperref}
+\usepackage{varioref}
+\usepackage{cleveref}
+\newcommand{\head}[1]{\textbf{#1}}
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=SimSun]{KaiTi}
+\crefname{figure}{图}{图}
+\crefname{table}{表}{表}
+\crefname{section}{节}{节}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+\title{Algebra}
+\author{Shuai}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\pagebreak
+
+\section{Start of Journey}
+
+	\subsection{Cartesian Product}
+
+	Algebra, and much of math deals with domain and mapping between domains.
+	The domain can be natural number, real number, matrix, vector. And the
+	mapping belongs to some universal set -- the set of Cartesian product.
+
+	\begin{definition}
+		Let $A$ and $B$ be sets. Then the set $A \times B$ of all ordered
+		pairs (a, b) where $a \in A, b \in B$ is called the Cartesian product
+		of the sets $A$ and $B$.
+	\end{definition}
+
+	I first met this concept at the time I leart the Database course. But I
+	do not get a intuitive feeling about it until now.
+
+	Actually, the real plane $R^2$ is a natural example of a Cartesian
+	product. Cartesian product is like a stage where all algebra players
+	must play on such stage.
+
+	\begin{remark}
+		The definition and examples are all in two dimesion, however,
+		Cartesian product can extend to any dimension.
+	\end{remark}
+
+	\subsection{Algebraic Operations}
+
+	With the objects we can manipulate(this part means set theory, which I
+	did not talk about), and the stage their mappings play on(Cartesian
+	product), we may try to establish some theory upon them.
+
+	\begin{remark}
+		There are no rules existing yet. Object(set) are just object. Mappings
+		are just mappings.
+	\end{remark}
+
+	With the stage we have now, we may begin to return to the math we are
+	used to.
+
+	We are used to the concept of operations, such as addition, subtraction.
+	They are abtracted from our daily life. To generalize them,
+	mathematicians bring forward the idea of binary algebraic operations,
+	which is one of the most fundamental in
+	mathematics\cite{dixon2011algebra}.
+
+	\begin{definition}
+		Let $M$ be a set. The mapping $\theta: M \times M \rightarrow M$ from
+		Cartesian square of $M$ to $M$ is called binary(algebraic) operation
+		on set $M$. Thus, corresponding to every ordered pair $(a,b)$ of
+		elements, where $a,b \in M$, there is a uniquely defined element
+		$\theta(a,b) \in M$. The element $\theta(a,b) \in M$ is called
+		composition of the elements a and b relative to this
+		operation.\cite{dixon2011algebra}
+	\end{definition}
+
+	Then starting from binary algebraic operation, mathematicians build the
+	algebraic structure bit by bit.
+
+	\begin{remark}
+		There is one important note given about notation in the
+		book\cite{dixon2011algebra}. It is often rather cumbersome to keep
+		referring to the function $\theta$ and using the notation
+		$\theta(a,b)$. There are several shorthand symbols that are employed
+		and $\theta(a,b)$ is often written using such special notation. For
+		example, the operation might be denoted by $\diamond$ and we might
+		then write $\theta(a,b) = a \diamond b$. We note that, in general,
+		$\theta(a,b)$ will be different from $\theta(b,a)$. However, quite
+		often, even the notation $a \diamond b$ is confusing, and most often
+		we would rather write the operation $\diamond$ using something more
+		familiar. The most familiar binary operators are $+$  and $\cdot$ and
+		it is these symbols that are most often useful in writing such
+		operations. Thus, instead of writing $a \diamond b$ we may write $a +
+		b$ or $ a \cdot b$. It is important to understand that sometimes
+		these symbols will have familiar meanings, but not
+		always.\cite{dixon2011algebra}
+	\end{remark}
+
+	\subsection{Important Properties of Algebraic Structure}
+
+	\subsubsection{Rules}
+
+	\begin{definition}
+		\textbf{Commutativity}: A binary operation on a set $M$ is called commutative if $ab = ba$ for
+		each pair $a,b$ of elements of $M$.\cite{dixon2011algebra}
+	\end{definition}
+
+	\begin{definition}
+		\textbf{Associativity}:A binary operation on a set $M$ is called associative if $(ab)c =
+		a(bc)$ for each triple $a,b,c$ of elements of
+		$M$.\cite{dixon2011algebra}
+	\end{definition}
+
+	\subsubsection{Special Elements}
+
+	Besides those two rules, the zero and identity element in one algebraic
+	structure are of special status.
+
+	\begin{definition}
+		\textbf{Neutral Element}:Let $M$ be a set with binary operation. The
+		element $e \in M$ is called a neutral element under this operation if
+		$ae = ea = a$ for each element $a$ of the set
+		$M$.\cite{dixon2011algebra}
+	\end{definition}
+
+	\begin{remark}
+		If the operation on $M$ is written multiplicatively, then the term
+		\textit{identity element} is usually ued rather than neutral element
+		and often $e$ is denoted by $1$ or $1_m$. If we use the additive form,
+		then the neutral element is usually called the \textit{zero element}
+		and is often denoted by $0_M$, so that the definition of the zero
+		element is $ a + 0_M = 0_M + a = a$ for each element $a \in
+		M$.\cite{dixon2011algebra}
+	\end{remark}
+
+	\subsubsection{Algebraic Properties}
+
+	Properties can also be understanded as restriction put on algebraic
+	structure or a abstraction of natural properties of natural algebraic
+	structure.
+
+	\begin{definition}
+		\textbf{Stable}: Let $M$ be a set with a binary operation. A subset S
+		is called stable under this operation if for each pair of elements
+		$a,b \in S$ the element ab also belongs to S.\cite{dixon2011algebra}
+	\end{definition}
+
+	\begin{definition}
+		\textbf{Invertibility}: Let $M$ be a set with binary operation and
+		suppose that there is an identity element $e$. The element $x$ is
+		called an inverse of the element $a$ if 
+		\begin{displaymath}
+			ax = xa = e.
+		\end{displaymath}
+		if $a$ has an inverse then we say that $a$ is invertible.\cite{dixon2011algebra}
+	\end{definition}
+
+	\begin{remark}
+		Invertibility is just a property. We are used to take it as granted if we
+		are so used to the natural operation such as addition or
+		multiplication. Some algebraic structure has it, but some do not.
+	\end{remark}
+
+	\subsection{Algebraic Structures}
+
+	\begin{definition}
+		\textbf{semigroup}: A nonempty set $S$ is called a semigroup if $S$
+		has an associative binary operation defined on it. If this operation i
+		commutative, we will say that $S$ is a commutative semigroup.\cite{dixon2011algebra}
+	\end{definition}
+
+	\begin{definition}
+		\textbf{group}: A semigroup $G$ with identity is called a group if
+		every element of $G$ is invertible. Thus, a group is a set $G$
+		together with a binary algebraic operation $(x,y) \rightarrow xy$
+		where $x,y \in G$, such that the following conditions(the group axiom)
+		holds:\cite{dixon2011algebra}
+		\begin{compactitem}
+		\item \textbf{G 1} The operation is associative so that $x(yz) =
+			(xy)z$ for all $x,y,z \in G$.
+		\item \textbf{G 2} $G$ has an identity element, an element $e$ such
+			that $xe = ex = x$ for all $x \in G$; often $1$ or $1_G$ is used in
+			place of $e$.
+		\item \textbf{G 3} Every element $x \in G$ has an inverse $x^{-1}$
+			such that $xx^{-1} = x^{-1}x = e$.
+		\end{compactitem}
+	\end{definition}
+
+	\begin{definition}
+		\textbf{abelian group}: If the group operation is commutative, then
+		the group is callled abelian(in honor of the great Norwegian
+		mathematician Nielss Henrik Abel(1802 - 1829).\cite{dixon2011algebra}
+	\end{definition}
+
+	\subsubsection{Mapping Properties}
+
+	\begin{definition}
+		Let $M, S$ be sets with binary operations that we denote by $\ast$ and
+		$\diamond$, respectively. Let $ f:M \rightarrow S $ be a mapping. Then
+		$f$ is called a homomorphism, if 
+		\begin{displaymath}
+			f(x\ast y) = f(x) \diamond f(y)
+		\end{displaymath}
+		for arbitrary elements $x,y \in M$.\cite{dixon2011algebra}
+	\end{definition}
+
+	We say that the mapping $f$ respects the operations. An injective
+	homomorphism is called \textbf{monomorphism}. A surjective homomorphism is called
+	an \textbf{epimorphism} and a bijective homomorphism is called an
+	\textbf{isomorphism}.\cite{dixon2011algebra}
+
+	When two structures $M,S$ are isomorphic in this way, there is no
+	difference between the structures other than the names we give to the
+	elements of the two sets $M$ and $S$ and the names $\ast$ and $\diamond$
+	that we give to the names of the operators. Other than this, the
+	structures of $M$ and $S$ are identical.\cite{dixon2011algebra}
+
+	If $M$ is a set with binary operation, then the study of $M$ has two
+	aspects. The first aspect is concerned with the nature of the elements
+	and the structure of $M$, while the second one concerns properties of
+	the operation. This enables such a study to be conducted from different
+	points of view. We can sdtudy the relationship between the elements and
+	the subsets of $M$ and also study individual properties with repsect to
+	given operation. Such an approach is feasible for the study of concrete
+	sets, such as permutations, transformations of the plane and space,
+	symmetries, matrices, and so on. However, we can conduct a study of the
+	properties that does not depend on the nature of the elements and which
+	is completely defined by the operation. This approach is the key
+	approach in algebra and it can be covered by very efficienty, thanks to
+	the fundamental notion of isomorphism. Making this more concrete,
+	Gottfired Leibniz(1646 - 1716) introduced the general notion of an
+	isomorphic relation(which he called a similarity) and pointed out the
+	possibility of the identification of isomorphic operations and
+	relations. He brought attention to a classical example of isomorphism,
+	namely the mapping $x \rightarrow logx$ from the set of all positive
+	real numbers with operation of multiplication to the set of all real
+	numbers with the operation of addition. A great French mathematician,
+	Evariste Galios(1811 - 1832), was also familiar with the idea of
+	isomorphism. He understood the corresponding elements of isomorphic sets
+	$M$ and $S$ have the same properties with repsect to the given
+	operation. This notion in its general form was developed in the middle
+	of the nineteenth century. In abstract algebra, we study only such
+	properties that are unchanged by isomorphisms.\cite{dixon2011algebra}
+
+\section{Fields}
+
+After becoming familiar with basic algebraic structure and their
+properties, I finally reach what I want to understand -- the algebraic
+structure, field.
+
+\begin{definition}
+	\textbf{Division Ring}: A set $D$ with two binary algebraic
+	operations, addition and multiplication, is called a divsion ring if
+	it satisfies the following properties:
+	\begin{compactitem}
+	\item
+		the addition is commutative, so 
+		\begin{displaymath}
+			x + y = y + x
+		\end{displaymath}
+		for all elements $x,y \in D$;
+	\item
+		the addition is associative, so
+		\begin{displaymath}
+			x + (y + z) = (x + y) + z
+		\end{displaymath}
+		for all elements $x,y,z \in D$;
+	\item
+		$D$ has a zero element, $0_D$, an element with the property that 
+		\begin{displaymath}
+			x + 0_D = 0_D + x = x
+		\end{displaymath}
+		for all elements $x \in D$.
+	\item
+		each element $x \in D$ has an additive inverse(the opposite or
+		negative element), $-x \in D$, an element with the property that
+		\begin{displaymath}
+			x + (-x) = 0_D;
+		\end{displaymath}
+	\item
+		the distributive laws hold in $D$, so
+		\begin{displaymath}
+			x(y + z) = xy + xz and (x + y)z = xz + yz
+		\end{displaymath}
+		for all elements $x,y,z \in D$;
+	\item
+		the multiplication is associative, so
+		\begin{displaymath}
+			x(yz) = (xy)z
+		\end{displaymath}
+		for all elements $x,y,z \in D$;
+	\item
+		$D$ has a (multiplicative) identity element, $e \neq 0_D$, and
+		element with property that
+		\begin{displaymath}
+			xe = ex = x
+		\end{displaymath}
+		for each element $x \in D$.
+	\item
+		each nonzero element $x \in D$ has a multiplicative inverse(the
+		reciprocal), $x^{-1} \in D$, and element with property
+		\begin{displaymath}
+			xx^{-1} = x^{-1}x = e
+		\end{displaymath}
+	\end{compactitem}\cite{dixon2011algebra}
+\end{definition}
+
+\begin{definition}
+	\textbf{Field}: A division ring $D$ is called a field, if the
+	multiplication of its elements is always commutative. Thus a field has
+	the additional property that $xy = yx$ for all elements $x,y \in D$.
+\end{definition}
+
+\bibliographystyle{plain}
+\bibliography{../reference_lib/reference}
+
+
+\end{document}
