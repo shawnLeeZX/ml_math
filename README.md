@@ -14,7 +14,6 @@ Words in this category is not inclusive at all. Further amendment will always
 be performed as I learn and understand new things.
 
 * development_of_algebra:               Development of Algebra
-* evolvement_of_probability_theory:     Evolvement of Probability Theory
 
 ## /information_theory: Understand of Information Theory
 
@@ -29,5 +28,11 @@ This part is intended for real number system, however, for now it only has:
 ## /algebra: Learning algrebra bottom-up or from intuition to abstraction.
 
 * algebra:  Now the construction of algrebraic structure has reached field.
+
+## /probability_theory: Learning probability theory bottom-up or from intuition to abstraction.
+
+* probability_theory: contains general introduction to evolvement of
+  probability theory and intuitive background in event, randome event and
+  random variable.
 
 ## /reference_lib: lib for bibtex
