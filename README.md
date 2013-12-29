@@ -7,8 +7,11 @@ some math subject and other related things. Currently it has:
 
 ### Mathematical Proof
 
-* least_squire:     Some proof about the trace of Matrix.
-* trace_of_matrix:  A detailed proof of getting the close form solution of least square method.
+* least_squire:         Some proof about the trace of Matrix.
+* trace_of_matrix:      A detailed proof of getting the close form solution of least square method.
+* object_similarity:    A detailed proof of getting the weight of one attribute
+  to make each attribute's influence equal when computing overall dissimilarity
+  of one clusters.
 
 ## /development
 

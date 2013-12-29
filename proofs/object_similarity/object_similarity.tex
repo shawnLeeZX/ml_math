@@ -1,0 +1,83 @@
+% vim:tw=72 sw=2 ft=tex
+%         File: thoughts_report.tex
+% Date Created: 2013 Jun 18
+%  Last Change: 2013 Dec 29
+%       Author: hhiker
+\documentclass[a4paper]{article}
+\usepackage{pdfpages}
+\usepackage{xltxtra}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{minted}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage[colorlinks=true,linkcolor=red]{hyperref}
+% \usepackage{hyperref}
+\usepackage{varioref}
+\usepackage{cleveref}
+\newcommand{\head}[1]{\textbf{#1}}
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=SimSun]{KaiTi}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+\title{Achieve Equal Influence on Attributes\\ \small ——Elements of
+Statistical Learning, Chapter 14 Note}
+\author{Shuai}
+
+\begin{document}
+\maketitle
+
+The overall dissimilarities consists of dissimilarities from each attribute. To make
+the influence made by each attribute equal, one way is to assign weight to them.
+
+We assume there are $p$ attributes.
+
+However, it is important to realise that setting the weight $\omega_j$ to the
+same value for each variable (say, $\omega = 1\ \forall\ j$) does \textit{not}
+necessarily give all attributes equal influence. The influence of the $jth$
+attribute $X_j$ on object dissimilarity $D(x_i,x_{i'})$ depends upon its
+relative contribution to the average object dissimilarity measure over all pairs
+of observations in the data set
+
+\begin{displaymath}
+	\bar{D} = \frac{1}{N^2}\sum\limits^{N}_{i=1}\sum\limits^{N}_{i'=1}D(x_i,x_{i'}) = \sum\limits^{p}_{j=1}\omega_jd_j
+\end{displaymath}
+
+with
+
+\begin{displaymath}
+	\bar{d_j} = \frac{1}{N^2}\sum\limits^{N}_{i=1}\sum\limits^{N}_{i'=1}d_j(x_{ij},x_{i'j})
+\end{displaymath}
+
+being the average dissimilarity on the $jth$ attribute. Thus, the relative
+influence of the $jth$ variable is $\omega_j\bar{d_j}$, and setting $\omega_j
+\sim 1/\bar{d_j}$ will give all attributes equal influence.
+
+Take squared-error distance as an example, then 
+\begin{eqnarray}
+	\bar{d_j} &=& \frac{1}{N^2}\sum\limits^{N}_{i=1}\sum\limits^{N}_{i'=1}(x_{ij} - x_{i'j})^2 \nonumber\\
+						&=& \frac{1}{N^2}\sum\limits^{N}_{i=1}\sum\limits^{N}_{i'=1}(x_{ij}^2 - 2x_{ij}y_{i'j} + x_{i'j}^2) \nonumber\\
+						&=& \frac{\sum\limits^{N}_{i=1}x_{ij}^2}{n} - 2E(X_{ij}X_{i'j}) + \frac{\sum\limits^{N}_{i'=1}x_{i'j}^2}{n} \nonumber\\
+						&=& EX_{j}^2 - 2E(X_{ij}X_{i'j}) + EX_{j}^2 \nonumber\\
+						&=& 2EX_{j}^2 - 2E(X_{j})^2 \nonumber\\
+						&=& 2Varj \nonumber
+\end{eqnarray}
+
+
+\end{document}
