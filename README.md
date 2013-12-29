@@ -12,6 +12,9 @@ some math subject and other related things. Currently it has:
 * object_similarity:    A detailed proof of getting the weight of one attribute
   to make each attribute's influence equal when computing overall dissimilarity
   of one clusters.
+* k_means_within_point_scatter_deviation:    The overall within-point
+  dissimilarity can be replaced with the summation of dissimilarity between
+  each point in the cluster and the cluster mean. Here is a detailed proof.
 
 ## /development
 

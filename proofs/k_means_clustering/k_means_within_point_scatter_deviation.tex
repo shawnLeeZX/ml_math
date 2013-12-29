@@ -1,0 +1,84 @@
+% vim:tw=72 sw=2 ft=tex
+%         File: thoughts_report.tex
+% Date Created: 2013 Jun 18
+%  Last Change: 2013 Dec 29
+%       Author: hhiker
+\documentclass[a4paper]{article}
+\usepackage{pdfpages}
+\usepackage{xltxtra}
+\usepackage{xcolor}
+\usepackage{xeCJK}
+\usepackage{minted}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{paralist}
+\usepackage[colorlinks=true,linkcolor=red]{hyperref}
+% \usepackage{hyperref}
+\usepackage{varioref}
+\usepackage{cleveref}
+\newcommand{\head}[1]{\textbf{#1}}
+\setCJKmainfont[BoldFont=SimHei,ItalicFont=SimSun]{KaiTi}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Remark}[section]
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+\newcommand{\qed}{\nobreak \ifvmode \relax \else
+      \ifdim\lastskip<1.5em \hskip-\lastskip
+      \hskip1.5em plus0em minus0.5em \fi \nobreak
+      \vrule height0.75em width0.5em depth0.25em\fi}
+
+\title{K means within-point scatter deviation\\ \small ——Elements of Statistical
+Learning Chapter 14 Reading Note}
+\author{Shuai}
+
+\begin{document}
+\maketitle
+
+The overall within-point dissimilarity can be replaced with the summation of
+dissimilarity between each point in the cluster and the cluster mean, meaning:
+
+\begin{eqnarray}
+	W(C) &=& \frac{1}{2}\sum\limits^{K}_{k=1}\sum\limits_{C(i)=k}\sum\limits_{C(i')=k} || x_i - x_{i'} ||^2 \\
+	     &=& \sum\limits^{K}_{k=1}N_k\sum\limits_{C(i)=k} || x_i - \bar{x_{k}} ||^2
+\end{eqnarray}
+
+where, there are K clusters; $C(i)=k$ means the label given to sample i
+is k; $N_k$ means the overall number of points in cluster k; $x_i$ means
+sample i.
+
+In this doc, detailed proof will be presented. During the proof, norm will be just written as square.
+
+For expression 1:
+
+For clarity, we replace $\sum\limits_{C(i)=k}\sum\limits_{C(i')=k}$ with $\sum\limits_{i}\sum\limits_{j}$.
+\begin{eqnarray}
+	\sum\limits_{C(i)=k}\sum\limits_{C(i')=k} || x_i - x_{i'} ||^2 &=&\sum\limits_{i}\sum\limits_{j} || x_i - x_{i'} ||^2\\
+	&=& \sum\limits_{i}\sum\limits_{j}(x_i^2 + x_j^2) - \sum\limits_{i}\sum\limits_{j}x_ix_j\\
+	&=& N_k\sum\limits_{i}x_i^2 + N_k\sum\limits_{j}x_j^2 - 2\sum\limits_{i}\sum\limits_{j}x_ix_j\\
+	&=& 2(N_k\sum\limits_{i}x_i^2 + \sum\limits_{i}\sum\limits_{j}x_ix_j)
+\end{eqnarray}
+
+For expression 2:
+
+For clarity, we replace $\sum\limits_{C(i)=k}$ with $\sum\limits_{i}$.
+\begin{eqnarray}
+	\sum\limits_{C(i)=k} || x_i - \bar{x_{k}} ||^2 &=&\sum\limits_{i} || x_i - \bar{x_{k}} ||^2\\
+	&=& \sum\limits_{i}(x_i^2 + \bar{x_k}^2) - \sum\limits_{i}x_i\bar{x_k}\\
+	&=& \sum\limits_{i}x_i^2 + N_k\bar{x_k}^2 - \sum\limits_{i}x_i\bar{x_k}\\
+	&=& \sum\limits_{i}x_i^2 + N_k\bar{x_k}^2 - 2N_k\bar{x_k}^2\\
+	&=& \sum\limits_{i}x_i^2 - N_k\bar{x_k}^2\\
+	&=& \sum\limits_{i}x_i^2 - \sum\limits_{i}x_i\sum\limits_{j}x_j/N_k\\
+\end{eqnarray}
+
+Since $\sum\limits_{i}x_i\sum\limits_{j}x_j = \sum\limits_{i}\sum\limits_{j}x_ix_j$, proof is done.
+
+\end{document}
