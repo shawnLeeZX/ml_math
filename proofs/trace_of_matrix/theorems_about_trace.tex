@@ -1,7 +1,7 @@
 % vim:tw=72 sw=2 ft=tex
 %         File: thoughts_report.tex
 % Date Created: 2013 Jun 18
-%  Last Change: 2013 Dec 10
+%  Last Change: 2014 Apr 23
 %       Author: hhiker
 \documentclass[a4paper]{article}
 \usepackage{xltxtra}
@@ -55,8 +55,8 @@
 \section{Definitions}
 
 \begin{definition}
-	The uppercase letters below all denote matrices and all are all
-	$N\times N$, and the trace of X is denoted trX.
+  The uppercase letters below all denote matrices and the trace of X is
+  denoted $trX$.
 \end{definition}
 
 \begin{definition}
@@ -74,6 +74,12 @@
 \end{definition}
 
 \section{Theorems Summary}
+
+The prerequisite of the following theorems is that matrices
+multiplication makes sense. For example, $AB$ and $BA$ should both be
+square matrices. $ABC$, $CAB$, $BCA$ should all be square matrices. But
+they may not be of the same dimension.
+
 \begin{enumerate}
 	\item Commutative Law:
 
@@ -90,7 +96,8 @@
 \section{Theorems and its Proof}
 
 \begin{theorem}
-	trAB = trBA
+	trAB = trBA, where we suppose that $A \in R^{m \times n}, B \in R^{n
+    \times m}$.
 \end{theorem}
 
 \begin{corollary}
@@ -102,23 +109,23 @@
 
 
 	\begin{equation}
-		trAB = \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}
+		trAB = \sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}
 		\label{eq:trace_of_AB}
 	\end{equation}
 
 	\begin{equation}
-		trBA = \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}b_{ij}a_{ji}
+		trBA = \sum\limits^{n}_{i=1}\sum\limits^{m}_{j=1}b_{ij}a_{ji}
 		\label{eq:trace_of_BA}
 	\end{equation}
 
 	Switch the role of $i$ and $j$ of \cref{eq:trace_of_BA}, we get:
 	\begin{displaymath}
-		trBA = \sum\limits^{n}_{j=1}\sum\limits^{n}_{i=1}b_{ji}a_{ij}
+		trBA = \sum\limits^{m}_{j=1}\sum\limits^{n}_{i=1}b_{ji}a_{ij}
 	\end{displaymath}
 	Change the summation sequence and exchange the position of $a$ and
 	$b$, we have:
 	\begin{displaymath}
-		trBA = \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}
+		trBA = \sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}
 	\end{displaymath}
 	This is exactly the same with \cref{eq:trace_of_AB}.
 
@@ -126,7 +133,8 @@
 \end{proof}
 
 \begin{theorem}
-	Suppose $f(A) = trAB$, then $\nabla_A trAB = B^T$
+	Suppose $f(A) = trAB$, then $\nabla_A trAB = B^T$ where $A \in R^{m
+    \times n}, B \in R^{n \times m}$.
 	\label{thm:trAB_=_B^T}
 \end{theorem}
 
@@ -135,17 +143,15 @@
 	\begin{eqnarray}
 		\nabla_AtrAB & = &
 		\begin{pmatrix}
-			\frac{\partial \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial a_{11}} & \cdots & \frac{\partial \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial a_{1n}}\\
+			\frac{\partial \sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial a_{11}} & \cdots & \frac{\partial \sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial a_{1n}}\\
 			\vdots &  & \vdots\\
-			\frac{\partial \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial a_{n1}} & \cdots & \frac{\partial \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial a_{nn}}
+			\frac{\partial \sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial a_{m1}} & \cdots & \frac{\partial \sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial a_{mn}}
 		\end{pmatrix}
 		\label{eq:nabla_trace_AB}
 	\end{eqnarray}
 
-	Note, $m$ is changed to $n$, since $A$ and $B$ are square matrix.
-
 	For $(\nabla_AtrAB)_{pq} = \frac{\partial
-	\sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial
+	\sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{ji}}{\partial
 	a_{pq}}$, there is only one term contains $a_{pq}$,
 	thus $(\nabla_AtrAB)_{pq} = b_{qp}$.
 
@@ -162,7 +168,8 @@
 \end{proof}
 
 \begin{theorem}
-	$\nabla_A trABA^TC = CAB + C^TAB^T$
+	$\nabla_A trABA^TC = CAB + C^TAB^T$, where $A \in R^{m \times n}, B
+  \in R^{n \times n}, C \in R^{m \times m}$.
 \end{theorem}
 
 \begin{proof}
@@ -176,16 +183,16 @@
 
 	Then, for $trABA^TC$, we have
 	\begin{displaymath}
-		trABA^TC = \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}d_{ji}
+		trABA^TC = \sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}d_{ji}
 	\end{displaymath}
 	Then, for $\nabla_A trABA^TC$, we have
 	\begin{displaymath}
-		\nabla_A trABA^TC = \nabla_A \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}d_{ji}
+		\nabla_A trABA^TC = \nabla_A \sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}d_{ji}
 	\end{displaymath}
 
 	\begin{displaymath}
 		(\nabla_A trABA^TC)_{pq} = d_{qp} +
-		\sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}(\nabla_A
+		\sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}(\nabla_A
 		d_{ji})_{pq}
 	\end{displaymath}
 
@@ -193,23 +200,23 @@
 
 	The second term is harder to see.
 
-	Let's first what $d_{ji}$ is.
+	Let's first figure out what $d_{ji}$ is.
 
 	\begin{eqnarray}
 		d_{ji}	& = & (BA^TC)_{ji} \nonumber\\
 		& = &
-		\sum\limits^{k=1}_{n}b_{jk}(\sum\limits^{n}_{l=1}a_{lk}c_{li})
+		\sum\limits^{n}_{k=1}b_{jk}(\sum\limits^{n}_{l=1}a_{lk}c_{li})
 		\nonumber
 	\end{eqnarray}
 
 	Since only terms contain $a_{pq}$ matter, the second term become
 	this:
 	\begin{eqnarray}
-		\sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}(\nabla_A
+		\sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}(\nabla_A
 		d_{ji})_{pq} & = &
-				\sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{jq}c_{pi}
+				\sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}a_{ij}b_{jq}c_{pi}
 				\nonumber\\
-				& = & \sum\limits^{n}_{i=1}\sum\limits^{n}_{j=1}c_{pi}a_{ij}b_{jq}
+				& = & \sum\limits^{m}_{i=1}\sum\limits^{n}_{j=1}c_{pi}a_{ij}b_{jq}
 				\nonumber\\
 				& = & (CAB)_{pq} \nonumber
 	\end{eqnarray}
